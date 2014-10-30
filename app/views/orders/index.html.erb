@@ -6,7 +6,7 @@
     <th>Total</th>
     <th></th>
   </tr>
-  <% @orders.sort_by {|o| o.created_at }.reverse.each do |order| %>
+  <% @orders.each do |order| %>
     <tr>
       <td><%= order.id %></td>
       <td><%= order.order_items.count %></td>

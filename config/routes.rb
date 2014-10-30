@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get '/orders', to: "orders#index", as: :orders
-
   get '/orders/:id', to: "orders#show", as: :order
 
   # The priority is based upon order of creation: first created -> highest priority.
