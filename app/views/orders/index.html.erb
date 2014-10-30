@@ -10,14 +10,7 @@
     <tr>
       <td><%= order.id %></td>
       <td><%= order.order_items.count %></td>
-
-      <% total = 0 %>
-      <% order.order_items.each do |item| %>
-        <% price = item.quantity * item.product.price %>
-        <% total += price %>
-      <% end %>
-
-      <td><%= number_to_currency (total / 100) %></td>
+      <td><%= number_to_currency (order.total / 100) %></td>
       <td><%= link_to "Info", order_path(order.id) %></td>
     </tr>
   <% end %>
