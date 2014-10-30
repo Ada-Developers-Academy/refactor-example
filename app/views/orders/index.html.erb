@@ -1,0 +1,25 @@
+<h1>Orders</h1>
+<table class='table table-striped'>
+  <tr>
+    <th>ID</th>
+    <th>Items</th>
+    <th>Total</th>
+    <th></th>
+  </tr>
+  <% @orders.sort_by {|o| o.created_at }.reverse.each do |order| %>
+    <tr>
+      <td><%= order.id %></td>
+      <td><%= order.order_items.count %></td>
+
+      <% total = 0 %>
+      <% order.order_items.each do |item| %>
+        <% price = item.quantity * item.product.price %>
+        <% total += price %>
+      <% end %>
+
+      <td><%= number_to_currency (total / 100) %></td>
+      <td><%= link_to "Info", order_path(order.id) %></td>
+    </tr>
+  <% end %>
+
+</table>

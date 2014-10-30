@@ -1,0 +1,22 @@
+<h1>Order #<%= @order.id %></h1>
+
+<table class='table'>
+  <% @order.order_items.each do |item| %>
+    <tr>
+      <% price = item.quantity * item.product.price %>
+      <td><strong><%= item.product.name %></strong></td>
+      <td><%= number_to_currency (item.product.price / 100) %></td>
+      <td>x</td>
+      <td><%= item.quantity %> </td>
+      <td>=</td>
+      <td><%= number_to_currency (price / 100) %></td>
+    </tr>
+  <% end %>
+</table>
+<% total = 0 %>
+<% @order.order_items.each do |item| %>
+  <% price = item.quantity * item.product.price %>
+  <% total += price %>
+<% end %>
+
+<h3>Total: <%= number_to_currency (total / 100) %></h3>
