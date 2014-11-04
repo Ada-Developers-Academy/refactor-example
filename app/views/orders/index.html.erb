@@ -10,7 +10,7 @@
     <tr>
       <td><%= order.id %></td>
       <td><%= order.order_items.count %></td>
-      <td><%= number_to_currency (order.total / 100) %></td>
+      <td><%= cents_to_dollars order.total %></td>
       <td><%= link_to "Info", order_path(order.id) %></td>
     </tr>
   <% end %>
